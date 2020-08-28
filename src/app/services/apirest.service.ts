@@ -12,7 +12,7 @@ export class ApirestService {
 
    getUsuarios(){
 
-    return this.http.get('http://apirest-php.com/usuarios');
+    return this.http.get('https://www.cgtareaapi.antvas.cl/usuarios');
 
    }
 }
