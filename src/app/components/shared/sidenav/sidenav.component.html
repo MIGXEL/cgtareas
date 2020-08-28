@@ -1,0 +1,45 @@
+
+    <div class="av-sidenav-contenedor" id="list-tab">
+        <div class="av-session">
+            <div class="av-user-img">
+                <img src="../../../../assets/img/user.png" alt="">
+            </div>
+            <div class="av-user-info">
+                <p class="av-user-name">Usuario Usuario</p>
+                <small class="av-user-profesion">Tec. Analista Programador</small>
+            </div>
+        </div>
+        <ul class="av-sidenav">
+            <li class="av-sidenav-item" routerLinkActive="av-activo">
+                <a class="av-sidenav-link" [routerLink]="['/home']">Inicio</a>
+            </li>
+            <li class="av-sidenav-item" routerLinkActive="av-activo">
+                <a class="av-sidenav-link" [routerLink]="['/task']">Tareas</a>
+            </li>
+            <li class="av-sidenav-item" routerLinkActive="av-activo">
+                <a class="av-sidenav-link" [routerLink]="['/users']">Usuarios</a>
+            </li>
+            <li class="av-sidenav-item" routerLinkActive="av-activo">
+                <a class="av-sidenav-link" [routerLink]="['/business']">Empresas</a>
+            </li>
+            <li class="av-sidenav-item" routerLinkActive="av-activo">
+                <a class="av-sidenav-link" [routerLink]="['/reports']">Reportes</a>
+            </li>
+            <li class="av-sidenav-item" routerLinkActive="av-activo">
+                <a class="av-sidenav-link" [routerLink]="['/settings']">Configuraciones</a>
+            </li>
+        </ul>
+
+        <div class="av-fecha-contenedor">
+            <div class="av-fecha">
+                <div class="av-dia">
+                    <p>{{ diaNombre }}</p>
+                    <strong>{{ dia }}</strong>
+                </div>
+                <div class="av-mes-anio">
+                    <small>{{ mes }}</small>
+                    <small>{{ anio }}</small>
+                </div>
+            </div>
+        </div>
+    </div>

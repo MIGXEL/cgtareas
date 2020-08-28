@@ -1,0 +1,138 @@
+.av-sidenav-contenedor{
+    padding: 0;
+    background-color: #393e46;
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* ------ ------ USUARIO ------ ------ */
+.av-session{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    border-bottom: 1px solid #222831;
+}
+
+.av-session .av-user-img{
+    width: 100px;
+    border-radius: 50%;
+    margin-bottom: 1em;
+}
+
+.av-session .av-user-img img{
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+
+.av-session .av-user-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+}
+
+
+/* ------ ------ ------ ------ */
+/* ESTILOS SIDENAV */
+/* ------ ------ ------ ------ */
+
+
+.av-sidenav{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+}
+
+.av-sidenav-item{
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.av-sidenav-link{
+    color: #ffffff;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.av-sidenav-item:hover{
+    background-color: #222831;
+}
+
+.av-activo{
+    background-color: #29a19c;
+    color: #ffffff;
+    box-shadow: 0px 0px 12px -1px rgba(41,161,156,1);
+}
+
+
+/* ------ ------ ------ ------ */
+/* ESTILO FECHA */
+/* ------ ------ ------ ------ */
+
+.av-fecha-contenedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+    padding: 1em;
+}
+
+.av-fecha-contenedor .av-fecha{
+    width: 110px;
+    border: 2px solid #ffffff;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.av-fecha .av-dia{
+    width: 100%;
+    border-top-right-radius: 1em;
+    border-top-left-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    background: #29a19c;
+    color: #ffffff;
+}
+.av-fecha .av-dia strong{
+    font-size: 2em;
+    margin-top: .2em;
+}
+
+.av-fecha .av-mes-anio{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #222831;
+    color: #ffffff;
+    border-bottom-right-radius: 1em;
+    border-bottom-left-radius: 1em;
+}
