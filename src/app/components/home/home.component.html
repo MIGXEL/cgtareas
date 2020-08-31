@@ -1,8 +1,162 @@
-<div class="av-home-contenedor">
-    <h1 class="">Hello, world!</h1>
-    <p class="">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
-        featured content or information.</p>
-    <hr class="">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+<div class="row row-cols-2 row-cols-md-4 text-center text-white animate__animated animate__fadeInDown">
+    <a class="text-white" [routerLink]="['/task']">
+        <div class="col">
+            <div class="card border-dark mb-3">
+                <div class="card-header bg-dark">Hoy</div>
+                <div class="card-body text-dark">
+                    <h1 class="card-text">5</h1>
+                    <small class="text-dark">Tareas</small>
+                </div>
+            </div>
+        </div>
+    </a>
+    <div class="col">
+        <div class="card border-warning mb-3">
+            <div class="card-header bg-warning">Pendientes</div>
+            <div class="card-body text-dark">
+                <h1 class="card-text">5</h1>
+                <small class="text-dark">Tareas</small>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card border-success mb-3">
+            <div class="card-header bg-success">Completadas</div>
+            <div class="card-body text-dark">
+                <h1 class="card-text">5</h1>
+                <small class="text-dark">Tareas</small>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card border-info mb-3">
+            <div class="card-header bg-info">{{ diaNombre }}</div>
+            <div class="card-body text-dark">
+                <h1 class="card-text">{{ dia }}</h1>
+                <small class="text-dark">{{ mes }} - {{ anio }}</small>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+
+<div class="row">
+    <div class="col-sm-12 col-md-4 mt-3">
+        <div class="list-group" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list"
+                href="#list-home" role="tab" aria-controls="home">Titulo Tarea 1</a>
+            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
+                href="#list-profile" role="tab" aria-controls="profile">Titulo Tarea 2</a>
+            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
+                href="#list-messages" role="tab" aria-controls="messages">Titulo Tarea 3</a>
+            <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
+                href="#list-settings" role="tab" aria-controls="settings">Titulo Tarea 4</a>
+            <a class="list-group-item list-group-item-action" id="list-business-list" data-toggle="list"
+                href="#list-business" role="tab" aria-controls="business">Titulo Tarea 5</a>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-8 mt-3">
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <h3>Titulo Tarea 1</h3>
+                        </div>
+                        <div class="col-6">
+                            <h3>{{ diaNombre }} {{ dia }}, {{ mes }} {{ anio }}</h3>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima cum rerum dolor atque.
+                                Iusto incidunt exercitationem quas assumenda natus vel veritatis consequatur suscipit
+                                pariatur mollitia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <h3>Titulo Tarea 2</h3>
+                        </div>
+                        <div class="col-6">
+                            <h3>{{ diaNombre }} {{ dia }}, {{ mes }} {{ anio }}</h3>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima cum rerum dolor atque.
+                                Iusto incidunt exercitationem quas assumenda natus vel veritatis consequatur suscipit
+                                pariatur mollitia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <h3>Titulo Tarea 3</h3>
+                        </div>
+                        <div class="col-6">
+                            <p>{{ diaNombre }} {{ dia }}, {{ mes }} {{ anio }}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima cum rerum dolor atque.
+                                Iusto incidunt exercitationem quas assumenda natus vel veritatis consequatur suscipit
+                                pariatur mollitia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <h3>Titulo Tarea 4</h3>
+                        </div>
+                        <div class="col-6">
+                            <h3>{{ diaNombre }} {{ dia }}, {{ mes }} {{ anio }}</h3>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima cum rerum dolor atque.
+                                Iusto incidunt exercitationem quas assumenda natus vel veritatis consequatur suscipit
+                                pariatur mollitia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="list-business" role="tabpanel" aria-labelledby="list-business-list">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <h3>Titulo Tarea 5</h3>
+                        </div>
+                        <div class="col-6">
+                            <h3>{{ diaNombre }} {{ dia }}, {{ mes }} {{ anio }}</h3>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima cum rerum dolor atque.
+                                Iusto incidunt exercitationem quas assumenda natus vel veritatis consequatur suscipit
+                                pariatur mollitia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
