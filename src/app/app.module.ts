@@ -20,6 +20,14 @@ import { UsersComponent } from './components/users/users.component';
 import { BusinessComponent } from './components/business/business.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RootNavComponent } from './root-nav/root-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -31,12 +39,20 @@ import { SettingsComponent } from './components/settings/settings.component';
     UsersComponent,
     BusinessComponent,
     ReportsComponent,
-    SettingsComponent
+    SettingsComponent,
+    RootNavComponent
   ],
   imports: [
     BrowserModule,
     app_routing,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [
     DatesService,

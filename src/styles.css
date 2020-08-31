@@ -12,8 +12,11 @@ body{
 
 .av-contenedor-app{
     padding: 2em;
+    width: 100%;
 }
 ul, p{
     padding: 0;
     margin: 0;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

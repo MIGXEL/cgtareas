@@ -1,5 +1,15 @@
-
-<div class="av-contenedor-cards">
+<div class="row row-cols-1 row-cols-md-4">
+    <div class="col mb-4"  *ngFor="let usuario of usuarios">
+        <div class="card h-100">
+            <img src="assets/img_usuarios/hombre.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h3 class="card-title">{{usuario.nombre}} {{usuario.apellido}}</h3>
+                <p class="card-text">{{ usuario.correo}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="av-contenedor-cards">
     <div class="av-card" *ngFor="let usuario of usuarios">
         <div class="av-img-usuario">
             <img src="assets/img_usuarios/hombre.jpg" alt="">
@@ -9,6 +19,4 @@
             <p>{{ usuario.correo}}</p>
         </div>
     </div>
-</div>
-
-
+</div> -->
