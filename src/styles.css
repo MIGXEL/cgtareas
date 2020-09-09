@@ -1,4 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+/* ------ ------ ------ ------ */
+/* VARIABLES COLORES */
+/* ------ ------ ------ ------ */
+:root {
+    --color-primario: #ff7315;
+    --color-secundario: #3a3535;
+    --color-tercero: #232020;
+    --color-cuarto: #f4f4f4;
+}
+
+
+
 html {
     box-sizing: border-box;
 }
@@ -8,6 +22,7 @@ html {
 
 body{
     font-family: 'Roboto', sans-serif;
+    background-color: var(--color-cuarto);
 }
 
 .av-contenedor-app{

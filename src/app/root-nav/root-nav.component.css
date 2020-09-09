@@ -1,17 +1,33 @@
 .sidenav-container {
   height: 100%;
+  
 }
 
 .sidenav {
   width: 200px;
+  background-color: #232020;
 }
 
 .sidenav .mat-toolbar {
   background: inherit;
 }
 
+.mat-nav-list a{
+  
+  color: #f4f4f4;
+}
+
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+.av-toolbar{
+  background-color: #ff7315;
+}
+
+.av-mat-toolbar{
+  color: #ff7315;
+
 }

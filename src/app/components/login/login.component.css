@@ -1,0 +1,32 @@
+.av-contenedor-formulario{
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input{
+    border-radius: 0;
+}
+
+input:focus{
+    border-color: var(--color-primario);
+    box-shadow: none;
+}
+
+.av-boton-login{
+    border-color: var(--color-primario);
+    border-radius: 0;
+    color: var(--color-primario);
+    transition: .3s ease-in;
+}
+
+.av-boton-login:hover{
+    background-color: #ff7315;
+    color: #f4f4f4;
+    
+}
+
+.av-boton-login:focus{
+    box-shadow: none;
+}

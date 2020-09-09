@@ -3,15 +3,15 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
+    <mat-toolbar class="av-mat-toolbar">Menu</mat-toolbar>
+    <mat-nav-list class="mat-nav-list">
       <a mat-list-item [routerLink]="['/home']">Inicio</a>
       <a mat-list-item [routerLink]="['/task']">Tareas</a>
       <a mat-list-item [routerLink]="['/users']">Usuarios</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar class="av-toolbar">
       <button
         type="button"
         aria-label="Toggle sidenav"

@@ -5,6 +5,7 @@ import { UsersComponent } from './components/users/users.component';
 import { BusinessComponent } from './components/business/business.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { LoginComponent } from './components/login/login.component';
 
 const ROUTES: Routes = [
     { path: 'home', component: HomeComponent},
@@ -13,7 +14,8 @@ const ROUTES: Routes = [
     { path: 'business', component: BusinessComponent},
     { path: 'reports', component: ReportsComponent},
     { path: 'settings', component: SettingsComponent},
-    { path: '**', pathMatch: 'full', redirectTo: 'home'}
+    { path: 'login', component: LoginComponent},
+    { path: '**', pathMatch: 'full', redirectTo: 'login'}
 ];
 
 export const app_routing = RouterModule.forRoot(ROUTES, { useHash: true});

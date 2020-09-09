@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms'
 
 /*RUTAS*/
 import { app_routing } from './app.routes';
@@ -28,6 +29,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { MatListModule } from '@angular/material/list';
     BusinessComponent,
     ReportsComponent,
     SettingsComponent,
-    RootNavComponent
+    RootNavComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import { MatListModule } from '@angular/material/list';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    FormsModule
   ],
   providers: [
     DatesService,

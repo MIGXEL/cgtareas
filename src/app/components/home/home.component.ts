@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatesService } from 'src/app/services/dates.service';
+import { ApirestService } from 'src/app/services/apirest.service';
 
 @Component({
   selector: 'app-home',
@@ -14,8 +15,20 @@ export class HomeComponent implements OnInit {
   anio:any;
   diaNombre:any;
   mes:any;
+  tareas: any [] = [];
+  totalTareas: any [] = [];
   
-  constructor( private datesService: DatesService) { }
+  constructor( private datesService: DatesService,
+                private apirest: ApirestService) {
+
+    this.apirest.getTareas()
+    .subscribe( (data:any) =>{
+      this.totalTareas = data;
+      this.tareas = data.detalle;
+      console.log(this.totalTareas);
+      console.log(this.tareas);
+    })
+   }
 
   ngOnInit(): void {
 
