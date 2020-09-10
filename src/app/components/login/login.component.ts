@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
 
     this.api.login(this.usuario)
       .then(result => {
-
+        console.log(result);
         if (result.login) {
 
           this.usuario = result.detalle;
