@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserModel } from '../../models/users.model';
-import { ApirestService } from 'src/app/services/apirest.service';
+import { ApirestService } from '../../services/apirest.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -17,9 +18,8 @@ export class LoginComponent implements OnInit {
   recordarme = false;
 
   constructor(private api: ApirestService,
-              private router: Router) {
+    private router: Router) {
 
-    this.leerToken();
     this.usuario = new UserModel();
   }
 
@@ -36,23 +36,57 @@ export class LoginComponent implements OnInit {
 
   login(form: NgForm) {
 
+    Swal.fire({
+      allowOutsideClick: false,
+      title: 'Autenticando...!',
+      onBeforeOpen: () => {
+        Swal.showLoading()
+      }
+    })
+
     this.api.login(this.usuario)
       .then(result => {
 
+        /* CONDICION PARA SABER SI LOGIN E CORRECTO O INCORRECTO */
         if (result.login) {
 
+          /* ALMACENAMOS DATOS USUARIO LOGEADO CORRECTAMENTE */
           this.usuario = result.detalle;
-          console.log(this.usuario["token"]);
-          this.guardarToken(this.usuario["token"]);
-          localStorage.setItem('email', this.usuario["correo"]);
 
+          /* GUARDAMOS TOKEN DE USUARIO EN LOCALSTOTAGE */
+          this.guardarToken(this.usuario["token"]);
+
+          /* GUARDAMOS EMAIL DE USUARIO EN LOCALSTOTAGE */
+          if (this.recordarme) {
+            localStorage.setItem('email',this.usuario["correo"]);
+            this.recordarme = true;
+          }else{
+            localStorage.removeItem('email');
+            this.recordarme = false;
+          }
+
+          Swal.close();
+
+          /* SI LO LOGIN ES CORRECTO REDIRECIONAMOS A PAGE HOME */
+          console.log(localStorage.getItem('token'));
           this.router.navigateByUrl('/home');
 
-        } else {
+        } 
+        /* LOGIN INCORRECTO */
+        else {
 
-          console.log(result.detalle);
+          this.usuario = result;
+          console.log(this.usuario);
+
+          Swal.fire({
+            icon: 'error',
+            title: this.usuario["detalle"],
+            
+          })
 
         }
+
+        return this.usuario;
       })
       .catch(error => console.log('error', error));
   }
@@ -70,14 +104,19 @@ export class LoginComponent implements OnInit {
     if (localStorage.getItem('token')) {
 
       this.userToken = localStorage.getItem('token');
-      console.log('leer token: ', this.userToken);
+      console.log('leer token: ', this.userToken.length);
+      
 
     } else {
 
       this.userToken = '';
+      
 
     }
   }
+
+  
+ 
 
 
 }
