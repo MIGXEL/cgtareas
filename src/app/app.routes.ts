@@ -16,7 +16,7 @@ const ROUTES: Routes = [
     { path: 'reports', component: ReportsComponent},
     { path: 'settings', component: SettingsComponent},
     { path: 'login', component: LoginComponent},
-    { path: '**', pathMatch: 'full', redirectTo: 'login'}
+    { path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
 
 export const app_routing = RouterModule.forRoot(ROUTES, { useHash: true});
