@@ -6,9 +6,10 @@ import { BusinessComponent } from './components/business/business.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const ROUTES: Routes = [
-    { path: 'home', component: HomeComponent},
+    { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
     { path: 'task', component: TaskComponent},
     { path: 'users', component: UsersComponent},
     { path: 'business', component: BusinessComponent},

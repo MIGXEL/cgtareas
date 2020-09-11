@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserModel } from '../models/users.model';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +10,14 @@ import { map } from 'rxjs/operators';
 export class ApirestService {
 
   private url = 'https://www.cgtareaapi.antvas.cl';
+  userToken: string;
 
+  constructor(private http: HttpClient,
+              private router: Router) {
 
-  constructor(private http: HttpClient) {
-    console.log('apirest listo para usar');
+    
+    this.leerToken();
+    
   }
 
   login(usuario: UserModel) {
@@ -39,15 +44,37 @@ export class ApirestService {
 
   }
 
+  leerToken() {
+
+    if (localStorage.getItem('token')) {
+
+      this.userToken = localStorage.getItem('token');
+      console.log('leer token servicio: ', this.userToken);
+
+    } else {
+
+      this.userToken = '';
+
+    }
+
+    return this.userToken;
+  }
+
   getUsuarios() {
 
-    return this.http.get('http://apirest-php.com/usuarios');
+    return this.http.get(`${this.url}/usuarios`);
 
   }
 
   getTareas() {
 
-    return this.http.get('http://apirest-php.com/tareas');
+    return this.http.get(`${this.url}/tareas`);
 
   }
+
+  autenticado(): boolean {
+    this.leerToken();
+    return this.userToken.length > 2;
+  }
+
 }
