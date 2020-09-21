@@ -9,6 +9,17 @@
       <a mat-list-item [routerLink]="['/task']">Tareas</a>
       <a mat-list-item [routerLink]="['/users']">Usuarios</a>
     </mat-nav-list>
+    <hr class="av-divisor">
+    <div *ngIf="infoUsuario" class="av-user-content animate__animated animate__fadeIn animate__slow">
+      <div class="av-img-user">
+        <img src="assets/img_usuarios/hombre.jpg" alt="..." class="av-img rounded-circle">
+      </div>
+      <div class="av-info-user">
+        <strong>{{ usuario.nombre }} {{ usuario.apellido }}</strong>
+        <small>{{ usuario.correo }}</small>
+      </div>
+      <button (click)="logout()" class="btn btn-outline-danger btn-block btn-sm">Salir</button>
+    </div>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar class="av-toolbar">

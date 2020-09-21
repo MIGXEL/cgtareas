@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserModel } from '../models/users.model';
 import { map } from 'rxjs/operators';
@@ -10,15 +10,28 @@ import { Router } from '@angular/router';
 export class ApirestService {
 
   private url = 'https://www.cgtareaapi.antvas.cl';
+
+  usuario={
+    nombre: 'usaurio',
+    apellido: 'usuario',
+    correo: 'correo@correo.com'        
+  };
   userToken: string;
+  tokenValid: boolean;
+
+  usuario$ = new EventEmitter();
 
   constructor(private http: HttpClient,
               private router: Router) {
 
     
     this.leerToken();
+
+    
     
   }
+
+
 
   login(usuario: UserModel) {
 
@@ -39,25 +52,16 @@ export class ApirestService {
 
     return fetch(`${this.url}/login`, requestOptions)
       .then(response => response.json());
-      
 
 
   }
 
-  leerToken() {
+  logout(){
 
-    if (localStorage.getItem('token')) {
+    localStorage.removeItem('token');
+    localStorage.removeItem('usuario');
+    this.router.navigateByUrl('/login');
 
-      this.userToken = localStorage.getItem('token');
-      console.log('leer token servicio: ', this.userToken);
-
-    } else {
-
-      this.userToken = '';
-
-    }
-
-    return this.userToken;
   }
 
   getUsuarios() {
@@ -72,9 +76,49 @@ export class ApirestService {
 
   }
 
+  
+  
   autenticado(): boolean {
     this.leerToken();
+    console.log('auth: ',this.leerToken());
     return this.userToken.length > 2;
+    
   }
+
+
+  
+  /* ------------------------------------ */
+  /* FUNCIONES LOCALSTORAGE */
+  /* ------------------------------------ */  
+  
+  leerUsuario(){
+    
+    if (localStorage.getItem('usuario')) {
+      
+      this.usuario$.emit(JSON.parse(localStorage.getItem('usuario')));
+      
+
+    }else{
+      this.usuario$.emit(this.usuario);
+    }
+  }
+  
+  leerToken() {
+
+    if (localStorage.getItem('token')) {
+
+      this.userToken = localStorage.getItem('token');
+      this.tokenValid = true;
+
+    } else {
+
+      this.userToken = '';
+      this.tokenValid = false;
+
+    }
+
+    return this.tokenValid;
+  }
+
 
 }

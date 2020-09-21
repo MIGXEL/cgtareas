@@ -31,3 +31,45 @@
   color: #ff7315;
 
 }
+
+.av-divisor{
+  background: var(--color-primario);
+}
+
+.av-img-user{
+  margin: 1em;
+}
+
+.av-img{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.av-user-content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 3em 0 3em 0;
+  padding: 0 1em;
+}
+
+.av-info-user{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.av-info-user strong{
+  color: var(--color-primario);
+}
+
+.av-info-user small{
+  color: var(--color-cuarto);
+}

@@ -4,6 +4,7 @@ import { UserModel } from '../../models/users.model';
 import { ApirestService } from '../../services/apirest.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-login',
@@ -32,6 +33,14 @@ export class LoginComponent implements OnInit {
 
     }
 
+    if (localStorage.getItem('usuario')) {
+
+      this.api.usuario$.emit(JSON.parse(localStorage.getItem('usuario')));
+    }
+
+    this.api.autenticado();
+
+
   }
 
   login(form: NgForm) {
@@ -46,11 +55,13 @@ export class LoginComponent implements OnInit {
 
     this.api.login(this.usuario)
       .then(result => {
-        console.log(result);
         if (result.login) {
 
           /* ALMACENAMOS DATOS USUARIO LOGEADO CORRECTAMENTE */
           this.usuario = result.detalle;
+          localStorage.setItem('usuario', JSON.stringify(this.usuario));
+          this.api.leerUsuario();
+
 
           /* GUARDAMOS TOKEN DE USUARIO EN LOCALSTOTAGE */
           this.guardarToken(this.usuario["token"]);
@@ -67,7 +78,6 @@ export class LoginComponent implements OnInit {
           Swal.close();
 
           /* SI LO LOGIN ES CORRECTO REDIRECIONAMOS A PAGE HOME */
-          console.log(localStorage.getItem('token'));
           this.router.navigateByUrl('/home');
 
         } 
@@ -75,7 +85,7 @@ export class LoginComponent implements OnInit {
         else {
 
           this.usuario = result;
-          console.log(this.usuario);
+          console.log('error: ',this.usuario);
 
           Swal.fire({
             icon: 'error',
@@ -103,7 +113,6 @@ export class LoginComponent implements OnInit {
     if (localStorage.getItem('token')) {
 
       this.userToken = localStorage.getItem('token');
-      console.log('leer token: ', this.userToken.length);
       
 
     } else {
@@ -113,6 +122,7 @@ export class LoginComponent implements OnInit {
 
     }
   }
+
 
   
  

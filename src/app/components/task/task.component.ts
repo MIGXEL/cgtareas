@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApirestService } from 'src/app/services/apirest.service';
 
 @Component({
   selector: 'app-task',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskComponent implements OnInit {
 
-  constructor() { }
+  tareas:any[] = [];
+
+  constructor(private api: ApirestService) { }
 
   ngOnInit(): void {
+
+    this.getTareas();
+  }
+
+  getTareas(){
+
+    this.api.getTareas().subscribe( (tareas:any) =>{
+      this.tareas = tareas.detalle;
+      console.log(this.tareas);
+    } )
+
   }
 
 }
