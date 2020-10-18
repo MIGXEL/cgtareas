@@ -1,10 +1,67 @@
+<button type="button" class="btn btn-dark btn-block mb-3" data-toggle="modal" data-target="#nuevoUsuario">
+    Nuevo usuario
+</button>
 <div class="row row-cols-2 row-cols-md-4">
-    <div class="col mb-4 animate__animated animate__fadeIn animate__slow"  *ngFor="let usuario of usuarios">
+    <div class="col mb-4 animate__animated animate__fadeIn animate__slow" *ngFor="let usuario of usuarios">
         <div class="card h-100">
             <img src="assets/img_usuarios/hombre.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h3 class="card-title">{{usuario.nombre}} {{usuario.apellido}}</h3>
                 <p class="card-text">{{ usuario.correo}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL NUEVO USUARIO -->
+<div class="modal fade" id="nuevoUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel">Nuevo Usuario</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="nuevoUsuario( f )" #f="ngForm">
+                    <div class="row">
+                        <div class="col-12 mb-2">
+                            <label for="nombre">Nombre</label>
+                            <input 
+                            type="text" 
+                            class="form-control"
+                            id="nombre"
+                            name="nombre"
+                            [(ngModel)]="usuario.nombre"
+                            placeholder="Nombre usuario">
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="apellido">Apellido</label>
+                            <input type="text" 
+                            class="form-control" 
+                            id="apellido"
+                            name="apellido"
+                            [(ngModel)]="usuario.apellido" 
+                            placeholder="Apellido usuario">
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="correo">Correo</label>
+                            <input type="email" 
+                            class="form-control" 
+                            id="email"
+                            name="email"
+                            [(ngModel)]="usuario.email" 
+                            placeholder="Correo usuario">
+                        </div>
+                    </div>
+                    <div *ngIf="error" class="alert alert-danger" role="alert">
+                        {{mensaje}}
+                      </div>
+                    <hr>
+                    <button type="button" class="btn btn-outline-danger mr-2" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn boton">Guardar</button>
+                </form>
             </div>
         </div>
     </div>

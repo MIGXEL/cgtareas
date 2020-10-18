@@ -25,6 +25,16 @@ body{
     background-color: var(--color-cuarto);
 }
 
+a{
+    color: var(--color-tercero);
+    transition: .2s ease-in;
+}
+
+a:hover{
+    color: var(--color-primario);
+    text-decoration: none;
+}
+
 .av-contenedor-app{
     padding: 2em;
     width: 100%;
@@ -34,10 +44,26 @@ ul, p{
     margin: 0;
 }
 
+.boton{
+    background-color: var(--color-primario);
+    color: var(--color-cuarto);
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .modal-backdrop{
     z-index: 0;
+}
+
+h3{
+    color: var(--color-primario);
+}
+
+label{
+    color: var(--color-primario);
+}
+
+p{
+    color: var(--color-tercero);
 }

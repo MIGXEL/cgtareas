@@ -17,12 +17,36 @@ export class TaskComponent implements OnInit {
     this.getTareas();
   }
 
+  createTarea(){
+
+    this.api.createTarea();
+
+  }
+
   getTareas(){
 
     this.api.getTareas().subscribe( (tareas:any) =>{
       this.tareas = tareas.detalle;
       console.log(this.tareas);
     } )
+
+  }
+
+  getTarea(id){
+
+    this.api.getTarea(id);
+
+  }
+
+  updateTarea(id){
+
+    /* this.api.updateTarea(id); */
+
+  }
+
+  deleteTarea(id){
+
+    this.api.deleteTarea(id);
 
   }
 

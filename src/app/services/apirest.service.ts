@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ApirestService {
 
-  private url = 'https://www.cgtareaapi.antvas.cl';
+  private url = 'http://apirest-php.com';
 
   usuario={
     nombre: 'usaurio',
@@ -31,7 +31,9 @@ export class ApirestService {
     
   }
 
-
+  /* ------------------------------------ */
+  /* FUNCIONES USER COMPONENTS */
+  /* ------------------------------------ */ 
 
   login(usuario: UserModel) {
 
@@ -70,17 +72,69 @@ export class ApirestService {
 
   }
 
+  createUser(usuario: UserModel) {
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+
+
+    var urlencoded = new URLSearchParams();
+    urlencoded.append("nombre", usuario.nombre);
+    urlencoded.append("apellido", usuario.apellido);
+    urlencoded.append("correo", usuario.email);
+
+    const requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: urlencoded,
+    };
+
+    return fetch(`${this.url}/registro`, requestOptions)
+      .then(response => response.json());
+
+
+  }
+
+  createTarea(){
+    console.log('Tarea Creada');
+  }
+
   getTareas() {
 
     return this.http.get(`${this.url}/tareas`);
 
   }
 
-  
+  getTarea(id) {
+
+    return this.http.get(`${this.url}/tareas/${id}`)
+    .subscribe(resp =>{
+      console.log(resp);
+    })
+
+  }
+
+  /* updateTarea(id) {
+
+    return this.http.put(`${this.url}/tareas/${id}`, this.urlencoded)
+    .subscribe(resp =>{
+      console.log(resp);
+    })
+
+  } */
+
+  deleteTarea(id) {
+
+    return this.http.delete(`${this.url}/tareas/${id}`)
+    .subscribe(resp =>{
+      console.log(resp);
+    })
+
+  }
   
   autenticado(): boolean {
     this.leerToken();
-    console.log('auth: ',this.leerToken());
     return this.userToken.length > 2;
     
   }
