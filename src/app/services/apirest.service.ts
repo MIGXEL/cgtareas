@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ApirestService {
 
-  private url = 'http://apirest-php.com';
+  private url = 'https://www.cgtareaapi.antvas.cl';
 
   usuario={
     nombre: 'usaurio',
