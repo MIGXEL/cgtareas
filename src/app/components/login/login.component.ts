@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   recordarme = false;
 
   constructor(private api: ApirestService,
-    private router: Router) {
+                      private router: Router) {
 
     this.usuario = new UserModel();
   }
