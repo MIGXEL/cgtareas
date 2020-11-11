@@ -10,6 +10,8 @@ import { app_routing } from './app.routes';
 import { ApirestService } from './services/apirest.service';
 import { DatesService } from './services/dates.service';
 
+/* PIPES  */
+import { ReplacePipe } from './pipes/replace.pipe';
 
 /* COMPONENTES*/
 import { AppComponent } from './app.component';
@@ -43,7 +45,8 @@ import { LoginComponent } from './components/login/login.component';
     ReportsComponent,
     SettingsComponent,
     RootNavComponent,
-    LoginComponent
+    LoginComponent,
+    ReplacePipe
   ],
   imports: [
     BrowserModule,

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ApirestService {
 
-  private url = 'https://www.cgtareaapi.antvas.cl';
+  private url = 'http://apirest-php.com';
 
   usuario={
     nombre: 'usaurio',
@@ -32,7 +32,7 @@ export class ApirestService {
   }
 
   /* ------------------------------------ */
-  /* FUNCIONES USER COMPONENTS */
+  /* FUNCIONES LOGIN COMPONENTS */
   /* ------------------------------------ */ 
 
   login(usuario: UserModel) {
@@ -66,6 +66,9 @@ export class ApirestService {
 
   }
 
+  /* ------------------------------------ */
+  /* FUNCIONES USER COMPONENTS */
+  /* ------------------------------------ */ 
   getUsuarios() {
 
     return this.http.get(`${this.url}/usuarios`);
@@ -96,6 +99,9 @@ export class ApirestService {
 
   }
 
+  /* ------------------------------------ */
+  /* FUNCIONES TASK COMPONENTS */
+  /* ------------------------------------ */ 
   createTarea(){
     console.log('Tarea Creada');
   }

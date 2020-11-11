@@ -17,6 +17,14 @@ export class HomeComponent implements OnInit {
   mes:any;
   tareas: any [] = [];
   totalTareas: any [] = [];
+  tareasCompletadas: any[] = [];
+  tareasInicio: any [] = [];
+  totalTareasCompletadas: number;
+  totalTareasInicio: number;
+  totalTareasProceso: number;
+  totalTareasPendiente: number;
+  tareasProceso: any [] = [];;
+  tareasPendientes: any [] = [];;
   
   constructor( private datesService: DatesService,
                 private apirest: ApirestService) {
@@ -25,9 +33,9 @@ export class HomeComponent implements OnInit {
     .subscribe( (data:any) =>{
       this.totalTareas = data;
       this.tareas = data.detalle;
-      console.log(this.totalTareas);
-      console.log(this.tareas);
     })
+
+    this.mostrarTareas();
    }
 
   ngOnInit(): void {
@@ -60,17 +68,43 @@ export class HomeComponent implements OnInit {
   formatoMes(meses:any) {
 
     this.mes = new Date().getMonth();
-    console.log(this.mes);
 
     for (let i = 0; i < this.meses.length; i++) {
       if (this.mes == i) {
         this.mes = this.meses[i];
-        console.log(this.mes);
       }
       
     }
 
     return this.mes;
+
+  }
+
+  mostrarTareas(){
+
+    this.apirest.getTareas()
+    .subscribe( (data:any) => {
+      this.tareas = data.detalle;
+      console.log(this.tareas);
+      this.tareas.forEach((tarea) => {
+        if (tarea.estado === "Inicio") {
+          this.tareasInicio.push(tarea);
+          this.totalTareasInicio = + 1
+        }
+        if (tarea.estado === "Proceso") {
+          this.tareasProceso.push(tarea);
+        }
+        if (tarea.estado === "Pendientes") {
+          this.tareasPendientes.push(tarea);
+        }
+        if (tarea.estado === "Completada") {
+          this.tareasCompletadas.push(tarea);
+          this.totalTareasCompletadas = + 1
+        }
+      });
+
+      console.log(this.tareasCompletadas.length);
+    });
 
   }
 

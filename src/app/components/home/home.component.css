@@ -4,3 +4,27 @@ a{
 hr{
     margin: 0;
 }
+
+.av-info-empresa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.av-info-empresa h2{
+    color: #000000;
+    margin: 3px;
+    
+}
+
+.av-info-empresa .av-slogan{
+    letter-spacing: 3px;
+    
+}
+
+.av-info-empresa .av-nombre-empresa{
+    display: flex;
+    align-items: flex-end;
+    
+}
