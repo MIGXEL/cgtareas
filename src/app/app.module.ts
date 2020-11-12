@@ -32,6 +32,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { LoginComponent } from './components/login/login.component';
+import { SlopesComponent } from './task/slopes/slopes.component';
+import { TodayComponent } from './task/today/today.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { LoginComponent } from './components/login/login.component';
     SettingsComponent,
     RootNavComponent,
     LoginComponent,
-    ReplacePipe
+    ReplacePipe,
+    SlopesComponent,
+    TodayComponent
   ],
   imports: [
     BrowserModule,

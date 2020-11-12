@@ -35,38 +35,7 @@
 </ul>
 
 <!-- CONTENIDO DE PESTAÑAS DE TAREAS -->
-<div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="tareasHoy" role="tabpanel" aria-labelledby="home-tab">
-        <table class="table table-hover table-sm mt-3">
-            <thead>
-                <tr>
-                    <th scope="col">Tarea</th>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Opciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let tarea of tareas">
-                    <td> <a href="" data-toggle="modal" data-target="#verTarea" (click)="getTarea(tarea['id'])">{{ tarea["titulo"] }}</a></td>
-                    <td>{{ tarea["created_at"] }}</td>
-                    <td><span class="badge badge-dark">Proceso</span></td>
-                    <td>
-                        <button type="button" class="btn btn-warning btn-sm mr-1" data-toggle="modal"
-                            data-target="#editarTarea" (click)="getTarea(tarea['id'])">
-                            <i class="fas fa-pen"></i>
-                        </button>
-                        <button type="button" class="btn btn-danger btn-sm" (click)="deleteTarea(tarea['id'])">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="tab-pane fade" id="pendientes" role="tabpanel" aria-labelledby="profile-tab">...</div>
-    <div class="tab-pane fade" id="completadas" role="tabpanel" aria-labelledby="contact-tab">...</div>
-</div>
+<app-today></app-today>
 
 <!-- MODAL VER TAREA -->
 <div class="modal fade" id="verTarea" data-backdrop="static" data-keyboard="false" tabindex="-1"

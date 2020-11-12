@@ -27,7 +27,6 @@ export class TaskComponent implements OnInit {
 
     this.api.getTareas().subscribe( (tareas:any) =>{
       this.tareas = tareas.detalle;
-      console.log(this.tareas);
     } )
 
   }
