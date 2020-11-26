@@ -15,8 +15,8 @@
 <div class="row row-cols-2 row-cols-md-4 text-center text-white animate__animated animate__fadeInDown">
     <a class="text-white" [routerLink]="['/task']">
         <div class="col">
-            <div class="card border-dark mb-3">
-                <div class="card-header bg-dark">Hoy</div>
+            <div class="card av-borde-primario mb-3">
+                <div class="card-header av-bg-primario">Hoy</div>
                 <div class="card-body text-dark">
                     <h1 class="card-text">{{ tareasInicio.length}}</h1>
                     <small class="text-dark">Tareas</small>
@@ -25,8 +25,8 @@
         </div>
     </a>
     <div class="col">
-        <div class="card border-warning mb-3">
-            <div class="card-header bg-warning">Pendientes</div>
+        <div class="card av-borde-secundario mb-3">
+            <div class="card-header av-bg-secundario">Pendientes</div>
             <div class="card-body text-dark">
                 <h1 class="card-text">{{ tareasPendientes.length}}</h1>
                 <small class="text-dark">Tareas</small>
@@ -34,8 +34,8 @@
         </div>
     </div>
     <div class="col">
-        <div class="card border-success mb-3">
-            <div class="card-header bg-success">Completadas</div>
+        <div class="card av-borde-tercero mb-3">
+            <div class="card-header av-bg-tercero">Completadas</div>
             <div class="card-body text-dark">
                 <h1 class="card-text">{{ tareasCompletadas.length}}</h1>
                 <small class="text-dark">Tareas</small>
@@ -43,8 +43,8 @@
         </div>
     </div>
     <div class="col">
-        <div class="card border-info mb-3">
-            <div class="card-header bg-info">{{ diaNombre }}</div>
+        <div class="card av-borde-cuarto mb-3">
+            <div class="card-header av-bg-cuarto">{{ diaNombre }}</div>
             <div class="card-body text-dark">
                 <h1 class="card-text">{{ dia }}</h1>
                 <small class="text-dark">{{ mes }} - {{ anio }}</small>

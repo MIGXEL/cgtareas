@@ -5,7 +5,7 @@
 
 .sidenav {
   width: 200px;
-  background-color: #232020;
+  background-color: var(--color-cuarto);
 }
 
 .sidenav .mat-toolbar {
@@ -24,11 +24,11 @@
 }
 
 .av-toolbar{
-  background-color: #ff7315;
+  background-color: var(--color-primario);
 }
 
 .av-mat-toolbar{
-  color: #ff7315;
+  color: var(--color-primario);
 
 }
 

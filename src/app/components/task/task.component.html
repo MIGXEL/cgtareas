@@ -1,23 +1,11 @@
-<!-- FORMULARIO AGREGRA NUEVA TAREA -->
-<form>
-    <div class="row">
-        <div class="col-12">
-            <h1>Nueva Tarea</h1>
-        </div>
-        <div class="col-sm-12 col-md-4 mb-2">
-            <input type="text" class="form-control" placeholder="Titulo tarea">
-        </div>
-        <div class="col mb-2">
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
-                placeholder="Descripción tarea"></textarea>
-        </div>
-        <div class="col-12 mb-2">
-            <button type="submit" class="btn btn-primary btn-block btn-sm" (click)="createTarea()">Agregar</button>
+<div class="row">
+    <div class="col-12">
+        <div class="col-12 mb-2 text-right">
+            <button type="submit" class="btn btn-primary btn-sm" data-toggle="modal"
+            data-target="#nuevaTarea">Agregar</button>
         </div>
     </div>
-    <hr>
-</form>
-
+</div>
 <!-- PESTAÑAS DE TAREAS -->
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
@@ -25,7 +13,7 @@
             aria-controls="tareasHoy" aria-selected="true">Tareas Hoy</a>
     </li>
     <li class="nav-item" role="presentation">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#pendientes" role="tab" aria-controls="pendientes"
+        <a class="nav-link" id="pendientes-tab" data-toggle="tab" href="#pendientes" role="tab" aria-controls="pendientes"
             aria-selected="false">Pendientes</a>
     </li>
     <li class="nav-item" role="presentation">
@@ -35,7 +23,147 @@
 </ul>
 
 <!-- CONTENIDO DE PESTAÑAS DE TAREAS -->
-<app-today></app-today>
+<!-- <app-today></app-today> -->
+<!-- TAREAS PARA EL DIA DE HOY -->
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="tareasHoy" role="tabpanel" aria-labelledby="home-tab">
+        <table class="table table-hover table-sm mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">Tarea</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let tarea of tareas">
+                    <td *ngIf="tarea.estado === 'Proceso'"> <a href="" data-toggle="modal" data-target="#verTarea">{{ tarea.titulo }}</a></td>
+                    <td *ngIf="tarea.estado === 'Proceso'">{{ tarea.fecha_inicio }}</td>
+                    <td *ngIf="tarea.estado === 'Proceso'"><span class="badge badge-info">{{ tarea.estado }}</span></td>
+                    <td *ngIf="tarea.estado === 'Proceso'">
+                        <button type="button" class="btn btn-warning btn-sm mr-1" data-toggle="modal"
+                            data-target="#editarTarea" >
+                            <i class="fas fa-pen"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="pendientes" role="tabpanel" aria-labelledby="pendientes-tab">
+        <table class="table table-hover table-sm mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">Tarea</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let tarea of tareas">
+                    <td *ngIf="tarea.estado === 'pendientes'"> <a href="" data-toggle="modal" data-target="#verTarea">{{ tarea.titulo }}</a></td>
+                    <td *ngIf="tarea.estado === 'Pendientes'">{{ tarea.fecha_inicio }}</td>
+                    <td *ngIf="tarea.estado === 'Pendientes'"><span class="badge badge-danger">{{ tarea.estado }}</span></td>
+                    <td *ngIf="tarea.estado === 'Pendientes'">
+                        <button type="button" class="btn btn-warning btn-sm mr-1" data-toggle="modal"
+                            data-target="#editarTarea" >
+                            <i class="fas fa-pen"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="completadas" role="tabpanel" aria-labelledby="completadas-tab">
+        <table class="table table-hover table-sm mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">Tarea</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let tarea of tareas">
+                    <td *ngIf="tarea.estado === 'Completada'"> <a href="" data-toggle="modal" data-target="#verTarea">{{ tarea.titulo }}</a></td>
+                    <td *ngIf="tarea.estado === 'Completada'">{{ tarea.fecha_inicio }}</td>
+                    <td *ngIf="tarea.estado === 'Completada'"><span class="badge badge-success">{{ tarea.estado }}</span></td>
+                    <td *ngIf="tarea.estado === 'Completada'">
+                        <button type="button" class="btn btn-warning btn-sm mr-1" data-toggle="modal"
+                            data-target="#editarTarea" >
+                            <i class="fas fa-pen"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- MODAL NUEVA TAREA -->
+<div class="modal fade" id="nuevaTarea" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="staticBackdropLabel">Nueva Tarea</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-12 mb-2">
+                            <label for="tituloTarea">Titulo Tarea</label>
+                            <input type="text" class="form-control" id="tituloTarea" placeholder="Titulo tarea"
+                                value="Nueva tarea">
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="descripcion">Descripción</label>
+                            <textarea class="form-control" id="descripcion" rows="3"
+                                placeholder="Descripción tarea">hola</textarea>
+                        </div>
+                        <div class="col-6">
+                            <label for="fechaTarea">Fecha Tarea</label>
+                            <input type="date" class="form-control" name="" id="fechaTarea">
+                        </div>
+                        <div class="col-6">
+                            <label for="estadoTarea">Estado Tarea</label>
+                            <select id="estadoTarea" class="form-control">
+                                <option selected>Proceso</option>
+                                <option>Pendiente</option>
+                                <option>Completada</option>
+
+                            </select>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="observacion">Observación</label>
+                            <textarea class="form-control" id="observacion" rows="3"
+                                placeholder="Descripción tarea">hola</textarea>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success" (click)="updateTarea(2)">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- MODAL VER TAREA -->
 <div class="modal fade" id="verTarea" data-backdrop="static" data-keyboard="false" tabindex="-1"

@@ -9,8 +9,10 @@ import { ApirestService } from 'src/app/services/apirest.service';
 export class TaskComponent implements OnInit {
 
   tareas:any[] = [];
+  fechaFormat: any;
+  fechaInicio: any;
 
-  constructor(private api: ApirestService) { }
+  constructor(private apiServices: ApirestService) { }
 
   ngOnInit(): void {
 
@@ -19,21 +21,30 @@ export class TaskComponent implements OnInit {
 
   createTarea(){
 
-    this.api.createTarea();
+    this.apiServices.createTarea();
 
   }
 
   getTareas(){
+    this.apiServices.getTareas()
+    .subscribe( (data:any) => {
+      this.tareas = data.detalle;
+      console.log(this.tareas);
+      this.tareas.forEach(fechs => {
+        
+        this.fechaFormat = new Date(parseInt(fechs.fecha_inicio));
+        this.fechaInicio = this.fechaFormat.toLocaleDateString();
+        fechs.fecha_inicio = this.fechaInicio;
 
-    this.api.getTareas().subscribe( (tareas:any) =>{
-      this.tareas = tareas.detalle;
-    } )
+      });
+      
+    })
 
   }
 
   getTarea(id){
 
-    this.api.getTarea(id);
+    this.apiServices.getTarea(id);
 
   }
 
@@ -45,7 +56,7 @@ export class TaskComponent implements OnInit {
 
   deleteTarea(id){
 
-    this.api.deleteTarea(id);
+    this.apiServices.deleteTarea(id);
 
   }
 

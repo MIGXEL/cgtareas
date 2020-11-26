@@ -85,7 +85,6 @@ export class HomeComponent implements OnInit {
     this.apirest.getTareas()
     .subscribe( (data:any) => {
       this.tareas = data.detalle;
-      console.log(this.tareas);
       this.tareas.forEach((tarea) => {
         if (tarea.estado === "Inicio") {
           this.tareasInicio.push(tarea);
@@ -102,8 +101,6 @@ export class HomeComponent implements OnInit {
           this.totalTareasCompletadas = + 1
         }
       });
-
-      console.log(this.tareasCompletadas.length);
     });
 
   }

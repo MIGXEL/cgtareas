@@ -5,10 +5,10 @@
 /* VARIABLES COLORES */
 /* ------ ------ ------ ------ */
 :root {
-    --color-primario: #ff7315;
-    --color-secundario: #3a3535;
-    --color-tercero: #232020;
-    --color-cuarto: #f4f4f4;
+    --color-primario: #86D7C1;
+    --color-secundario: #28C3EA;
+    --color-tercero: #106A8C;
+    --color-cuarto: #263955;
 }
 
 
@@ -66,4 +66,36 @@ label{
 
 p{
     color: var(--color-tercero);
+}
+
+.av-bg-primario{
+    background-color: var(--color-primario);
+}
+
+.av-bg-secundario{
+    background-color: var(--color-secundario);
+}
+
+.av-bg-tercero{
+    background-color: var(--color-tercero);
+}
+
+.av-bg-cuarto{
+    background-color: var(--color-cuarto);
+}
+
+.av-borde-primario{
+    border-color: var(--color-primario);
+}
+
+.av-borde-secundario{
+    border-color: var(--color-secundario);
+}
+
+.av-borde-tercero{
+    border-color: var(--color-tercero);
+}
+
+.av-borde-cuarto{
+    border-color: var(--color-cuarto);
 }
